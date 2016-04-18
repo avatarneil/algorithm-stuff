@@ -1,13 +1,13 @@
 float [] nums;
 
 void setup() {
-  int k= millis();
-  nums = new float [10];
-  for (int z = 0; z<10; z++) {
+  nums = new float [5000000];
+  for (int z = 0; z<5000000; z++) {
     nums [z]=random(10);
   }
+  int k= millis();
   mergeSort(nums,0,nums.length-1);
-  //println(millis()-k);
+  println(millis()-k);
 }
 
 void draw() {
@@ -49,8 +49,6 @@ void merge(float [] array, int p, int q, int r){
       j++;
     }
   }
-  println(array);
-  println("__________");
 }
 
 void mergeSort(float [] array, int p, int r){
