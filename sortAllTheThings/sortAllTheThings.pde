@@ -1,12 +1,13 @@
-float [] nums;
+//float [] nums;
+import java.util.List;
+ArrayList <Comparable> nums = new ArrayList <Comparable>();
 
 void setup() {
-  nums = new float [5000000];
   for (int z = 0; z<5000000; z++) {
-    nums [z]=random(10);
+    nums.add(random(10));
   }
   int k= millis();
-  mergeSort(nums,0,nums.length-1);
+  mergeSort(nums,0,nums.size()-1);
   println(millis()-k);
 }
 
@@ -14,18 +15,18 @@ void draw() {
 }
 
 void sortOne() {
-  for (int j = 1; j< nums.length; j++) {
-    float js = nums[j];
+  for (int j = 1; j< nums.size(); j++) {
+    Comparable js = nums.get(j);
     int i = j - 1;
-    while (i>=0 && nums[i]>js) {
-      nums[i+1]=nums[i];
+    while (i>=0 && (nums.get(i).compareTo(js)>0)) {
+      nums.set(i+1, nums.get(i));
       i=i-1;
     }
     nums[i+1]=js;
   }
 }
 
-void merge(float [] array, int p, int q, int r){
+void merge(ArrayList array, int p, int q, int r){
   int n1 = q - p +1;
   int n2 = r - q; //both n1 & n2 are 5
   float [] L=new float [n1+1];
@@ -51,7 +52,7 @@ void merge(float [] array, int p, int q, int r){
   }
 }
 
-void mergeSort(float [] array, int p, int r){
+void mergeSort(ArrayList array, int p, int r){
   int q;
   if (p < r){
     q= floor((p+r)/2);
