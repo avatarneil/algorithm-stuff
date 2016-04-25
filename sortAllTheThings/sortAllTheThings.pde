@@ -22,37 +22,37 @@ void sortOne() {
       nums.set(i+1, nums.get(i));
       i=i-1;
     }
-    nums[i+1]=js;
+    nums.set(i+1,js);
   }
 }
 
-void merge(ArrayList array, int p, int q, int r){
+void merge(ArrayList <Comparable> array, int p, int q, int r){
   int n1 = q - p +1;
   int n2 = r - q; //both n1 & n2 are 5
-  float [] L=new float [n1+1];
-  float [] R=new float [n2+1];
+  ArrayList <Comparable> L= new ArrayList <Comparable>();
+  ArrayList <Comparable> R =new ArrayList <Comparable>();
   for (int i = 0; i<n1; i++){
-    L[i] = array[p+i];
+    L.add(array.get(p+i));
   }
   for (int j=0; j<n2; j++){
-    R[j] = array[q+j+1];
+    R.add(array.get(q+j+1));
   }
-  L[n1]= 1/0.0;
-  R[n2]= 1/0.0;
+  L.set(n1 -1,1/0.0);
+  R.set(n2 -1,1/0.0);
   int i=0;
   int j=0;
   for (int k=p; k<=r; k++){
-    if (L[i]<= R[j]){
-      array[k] = L[i];
+    if (L.get(i).compareTo(R.get(j))>0){
+      array.set(k,L.get(i));
       i++;
     } else {
-      array[k] = R[j];
+      array.set(k,R.get(j));
       j++;
     }
   }
 }
 
-void mergeSort(ArrayList array, int p, int r){
+void mergeSort(ArrayList <Comparable> array, int p, int r){
   int q;
   if (p < r){
     q= floor((p+r)/2);
