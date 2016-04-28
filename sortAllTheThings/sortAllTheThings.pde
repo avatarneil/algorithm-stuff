@@ -3,7 +3,7 @@ import java.util.List;
 ArrayList <Comparable> nums = new ArrayList <Comparable>();
 
 void setup() {
-  for (int z = 0; z<10; z++) {
+  for (int z = 0; z<1000; z++) {
     nums.add(random(10));
   }
   int k= millis();
@@ -43,7 +43,7 @@ void merge(ArrayList <Comparable> array, int p, int q, int r) {
   int j=0;
   for (int k=p; k<=r; k++) {
     println(i,j);
-    if (L.get(i).compareTo(R.get(j))>=0 && i <L.size()){
+    if ((j>=R.size()) || (i <L.size() && L.get(i).compareTo(R.get(j))>=0)){
       array.set(k, L.get(i));
       i++;
     } else {
